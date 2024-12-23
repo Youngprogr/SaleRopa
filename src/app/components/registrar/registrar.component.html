@@ -1,0 +1,25 @@
+<div class="register-container">
+    <h2>Bienvenido usuario!</h2>
+    <form [formGroup]="registerForm">
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput formControlName="userName">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" [type]="ocultarPass ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="ocultarPass = !ocultarPass">
+          <mat-icon>{{ ocultarPass ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      
+      <div class="button-group">
+        <button mat-raised-button color="warn" routerLink="/" class="button">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="registerForm.invalid" (click)="registrar()">Registrarse</button>
+      </div>
+    
+    </form>
+  </div>
+  

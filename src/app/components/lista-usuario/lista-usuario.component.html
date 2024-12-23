@@ -1,0 +1,25 @@
+<app-menu></app-menu>
+<div class="container">
+    <h2>Gestión de Usuarios</h2>
+    <p>Total de usuarios: {{ totalUsers }}</p>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre de Usuario</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.userName }}</td>
+          <td>
+            <button class="delete-btn" (click)="deleteUser(user.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

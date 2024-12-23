@@ -1,0 +1,77 @@
+<app-menu></app-menu>
+<mat-toolbar color="primary">
+  <span>Lista de Ventas</span>
+
+ <mat-form-field appearance="fill">
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por nombre o DNI" />
+  </mat-form-field>
+
+
+  <span>Registros: {{ cant_venta }}</span>
+</mat-toolbar>
+
+
+<mat-table [dataSource]="dsVentas">
+
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="nombreCliente">
+    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.nombreCliente }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dniCliente">
+    <mat-header-cell *matHeaderCellDef> DNI </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.dniCliente }} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="talla">
+    <mat-header-cell *matHeaderCellDef> Talla </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.talla }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="precioVenta">
+    <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.precioVenta | currency:'PEN':'symbol':'1.2-2' }} </mat-cell>
+  </ng-container>
+  
+
+
+  <ng-container matColumnDef="nuevo">
+    <mat-header-cell *matHeaderCellDef> Nuevo </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.nuevo ? 'Sí' : 'No' }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaEnvio">
+    <mat-header-cell *matHeaderCellDef> Fecha de Envío </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ formateaFecha(element.fechaEnvio) }} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="direccion">
+    <mat-header-cell *matHeaderCellDef> Dirección </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.direccion }} </mat-cell>
+  </ng-container>
+
+  <ng-container  matColumnDef="opciones">
+    <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button  *ngIf="isAdmin()" class="red-button" (click)="eliminarVenta(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      
+    </mat-cell>
+  </ng-container>   <mat-header-row *matHeaderRowDef="displayedColumuns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumuns;"></mat-row>
+</mat-table>
+
+>
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>

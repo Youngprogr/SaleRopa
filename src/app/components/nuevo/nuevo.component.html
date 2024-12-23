@@ -1,0 +1,74 @@
+<app-menu></app-menu>
+<h3>Registra una Venta</h3>
+<br><br>
+<h2>Datos a Registrar</h2>
+<br>
+<form [formGroup]="addForm">
+
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Id</mat-label>
+    <input matInput formControlName="id" readonly="true">        
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre de Cliente</mat-label>
+    <input matInput formControlName="nombreCliente" required>
+    <mat-error *ngIf="addForm.get('nombreCliente')?.invalid">El nombre es obligatorio</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>DNI</mat-label>
+    <input matInput formControlName="dniCliente" required>
+    <mat-error *ngIf="addForm.get('dniCliente')?.invalid">El DNI es obligatorio</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de Envío</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fechaEnvio" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="addForm.get('fechaEnvio')?.invalid">La fecha es obligatoria</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Talla</mat-label>
+    <mat-select formControlName="talla" required>
+      <mat-option value="XS">XS</mat-option>
+      <mat-option value="S">S</mat-option>
+      <mat-option value="M">M</mat-option>
+      <mat-option value="L">L</mat-option>
+      <mat-option value="XL">XL</mat-option>
+    </mat-select>
+    <mat-error *ngIf="addForm.get('talla')?.invalid">La talla es obligatoria</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Precio</mat-label>
+    <input matInput formControlName="precioVenta" type="number" required>
+    <mat-error *ngIf="addForm.get('precioVenta')?.invalid">El precio debe ser mayor a 0</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Dirección</mat-label>
+    <input matInput formControlName="direccion" required>
+    <mat-error *ngIf="addForm.get('direccion')?.invalid">La dirección es obligatoria</mat-error>
+  </mat-form-field>
+  <br>
+
+  <label>¿Nuevo?</label>
+  <mat-radio-group formControlName="nuevo" required>
+    <mat-radio-button [value]="true">Sí</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br><br>
+
+  <button mat-raised-button color="secondary" routerLink="/Listar">Cancelar</button>
+  <button mat-flat-button color="primary" [disabled]="!addForm.valid" (click)="registarVenta()">Grabar</button>
+</form>

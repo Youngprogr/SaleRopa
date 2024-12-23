@@ -1,0 +1,126 @@
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #702963, #c01097); /* Fondo degradado */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor blanco para el formulario */
+.form-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    width: 350px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out; /* Animación suave */
+}
+
+/* Título */
+.form-container h3 {
+    color: #702963;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Campos del formulario */
+.form-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative; /* Para manejar mejor el ícono */
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #702963;
+    font-size: 1.5rem;
+    padding-left: 0.5rem;
+}
+
+/* Botón principal */
+button[mat-raised-button] {
+    background: linear-gradient(135deg, #702963, #5e1f56); /* Degradado morado */
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    text-transform: uppercase;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button[mat-raised-button]:hover {
+    background-color: #5e1f56;
+    color: #ffffff;
+    transform: scale(1.03); /* Pequeño zoom al pasar el mouse */
+}
+
+/* Botón de registro */
+.register-btn {
+    background: none;
+    border: 1px solid #702963;
+    color: #702963;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    text-transform: uppercase;
+    border-radius: 6px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.register-btn:hover {
+    background: #702963;
+    color: #ffffff;
+    transform: scale(1.03);
+}
+
+/* Mensajes de error */
+mat-error {
+    color: #c01097;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 600px) {
+    .form-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    mat-icon {
+        font-size: 1.2rem;
+        padding-left: 0.3rem;
+    }
+}

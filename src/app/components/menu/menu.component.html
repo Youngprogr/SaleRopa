@@ -1,0 +1,25 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="title">Sistema de Venta de Ropa</span>
+
+  <div class="user-info">
+    <p class="user-detail">UserName: <span class="highlight">{{username}}</span></p>
+    <p class="user-detail">Rol: <span class="highlight">{{rol}}</span></p>
+  </div>
+
+  <nav class="nav-links">
+    <a routerLink="/Listar" class="toolbar-link">
+      <mat-icon>list</mat-icon> Listar Venta
+    </a>
+   
+    <a *ngIf="isAdmin()" routerLink="/Nuevo" class="toolbar-link">
+      <mat-icon>group</mat-icon> Registro de Venta
+    </a>
+    <a *ngIf="isAdmin()" routerLink="/lista-usuario" class="toolbar-link">
+      <mat-icon>group</mat-icon> Lista de Usuarios
+    </a>
+  </nav>
+
+  <a class="logout" (click)="CerrarSesion()">
+    <mat-icon>logout</mat-icon>
+  </a>
+</mat-toolbar>

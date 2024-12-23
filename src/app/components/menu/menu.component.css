@@ -1,0 +1,127 @@
+/* Estilo general para la barra de herramientas */
+.custom-toolbar {
+  background: linear-gradient(135deg, #6a1b9a, #4a148c); /* Degradado morado oscuro */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out; /* Animación suave al cargar */
+}
+
+/* Animación para el toolbar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo del título */
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-right: auto;
+  color: #ffca28; /* Amarillo */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Información del usuario */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  text-align: right;
+}
+
+.user-detail {
+  font-size: 14px;
+  margin: 2px 0;
+  color: #e0e0e0;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #ffca28; /* Amarillo */
+}
+
+/* Navegación y enlaces */
+.nav-links {
+  display: flex;
+  margin-left: 10px;
+  gap: 40px; /* Espaciado entre enlaces */
+}
+
+.toolbar-link {
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.toolbar-link mat-icon {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.toolbar-link:hover {
+  transform: scale(1.1);
+  background: #ffca28;
+  color: #4a148c; /* Texto morado oscuro */
+}
+
+/* Botón de cierre de sesión */
+.logout mat-icon {
+  color: #ff5722;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.logout mat-icon:hover {
+  transform: scale(1.2);
+  color: #e64a19; /* Más oscuro */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .custom-toolbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .user-info {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Reduce el espacio entre los enlaces */
+    margin-left: 20px; /* Ajusta la posición del grupo hacia la izquierda */
+  }
+  
+
+  .toolbar-link {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .logout mat-icon {
+    margin-top: 10px;
+  }
+}
+
